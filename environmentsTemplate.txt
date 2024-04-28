@@ -8,9 +8,15 @@ PROXYPORT="Proxy Port could be 80 or 9999"
 RERUN_TIME="time in which scrapper will run again"
 WEBSITE_LINK="Scarpping website link" or https://myip.ms/
 
+# EmailJs
+Before using Emailjs enable these things from emailjs account setting
+Allow EmailJS API for non-browser applications.
+Use Private Key (recommended)
+And in Emailjs you can't send image if it exceeds certain Kbs so only text
 
-GMAIL_APP_USERNAME="App Name"
-GMAIL_APP_PASSWORD="16 Digit Password"
-GMAIL_SENDER="Sender Email like that is used to create Google App Password"
-GMAIL_RECEIVER="Reciever Email whom you would like to send screenshot"
-
+EMAILJS_SERVICE_ID="Service ID"
+EMAILJS_TEMPLATE_ID="Template ID , email format template"
+EMAILJS_PUBLIC_KEY="Public key"  
+EMAILJS_PRIVATE_KEY="It is importent to provide private key when using on backend (like with nodejs)"
+TO_NAME="Reciever Name"
+TO_EMAIL="Reciever Email"

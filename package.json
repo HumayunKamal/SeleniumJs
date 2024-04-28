@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emailjs/nodejs": "^2.2.0",
     "dotenv": "^16.4.5",
     "nodemailer": "^6.9.13",
     "proxy-chain": "^2.4.0",
