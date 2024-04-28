@@ -20,13 +20,31 @@ import proxyChain from "proxy-chain";
 // nodemailder for sending email
 import nodemailer from "nodemailer";
 
-// const from .env
+// consts from .env
 const websiteLink = process.env.WEBSITE_LINK; /* Any website link */
 const rerunWait = process.env.RERUN_TIME;
 const proxyUsername = process.env.DOMAIN_USERNAME;
 const proxyPassword = process.env.DOMAIN_PASSWORD;
 const proxyDomain = process.env.PROXYDOMAIN;
 const proxyPort = process.env.PROXYPORT;
+
+// Google App Password consts from .env
+
+const gmailAppUsername = process.env.GMAIL_APP_USERNAME;
+const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
+const gmailSender = process.env.GMAIL_SENDER;
+const gmailReceiver = process.env.GMAIL_SENDER;
+
+// Nodemailer config
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // Use `true` for port 465, `false` for all other ports
+  auth: {
+    user: gmailAppUsername,
+    pass: gmailAppPassword,
+  },
+});
 
 const checkWebsite = async (parentDir) => {
   // Config Driver
@@ -104,6 +122,20 @@ const checkWebsite = async (parentDir) => {
     fs.writeFileSync(screenshotPath, data, "base64");
   });
   console.log("ScreenShot Taken and saved");
+
+  const info = await transporter.sendMail({
+    from: `"UserName 👻" ${gmailSender}`, // Sender name and Sender address
+    to: `${gmailReceiver}`, // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+    attachments: {
+      filename: `${formattedTime}.png`,
+      path: screenshotPath,
+    },
+  });
+
+  console.log("Message sent: %s", info.messageId);
 
   // Close the browser (Prevent memory leaks)
   // though while testing you can comment it out or use driver.sleep(time in milisecond)

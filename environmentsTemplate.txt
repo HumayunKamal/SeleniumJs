@@ -12,5 +12,5 @@ WEBSITE_LINK="Scarpping website link" or https://myip.ms/
 GMAIL_APP_USERNAME="App Name"
 GMAIL_APP_PASSWORD="16 Digit Password"
 GMAIL_SENDER="Sender Email like that is used to create Google App Password"
-GMAIL_RECEIVER="Reciever Email whom would you like to send screenshot"
+GMAIL_RECEIVER="Reciever Email whom you would like to send screenshot"
 
